@@ -1,0 +1,21 @@
+name: Test Casadi on Python 3.9
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-casadi-python-3_9:
+
+    runs-on: ubuntu-latest
+    container: python:3.9
+
+    steps:
+    - run: python -V
+    - run: pip install --upgrade pip
+    - run: pip install numpy casadi
+    
+    - uses: actions/checkout@v2
+    - run: python run_dummy_problem.py 
